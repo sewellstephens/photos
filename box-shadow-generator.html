@@ -1,0 +1,172 @@
+<style>
+  body {
+  font-family: arial;
+  }
+  input {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 1px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  input:focus {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 2px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  select {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 1px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  select:focus {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 2px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  button {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  background-color: #0095FF;
+  outline: none;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-delay: 0s;
+  }
+  button:hover {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  opacity: 0.5;
+  background-color: #0095FF;
+  outline: none;
+  cursor: pointer;
+  }
+  textarea {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 1px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+</style>
+<form name="gen" id="calc">
+<input type="text" id="T1" name="T1" placeholder="Color (RGB format)" required>
+</form>
+<button name="B1" onclick="GenerateButton()" class="btn">Generate</button>
+  <p>Copy and paste code</p>
+<p><textarea rows="5" id="TA1" name="TA1" placeholder="Code appears here..." readonly></textarea></p>
+<button onclick="OnSelectCode()" class="btn" id="copybtn">Copy</button>
+<script>
+    var T1,TA1;
+		window.onload = function() 
+		{
+			
+			T1 = document.getElementById('T1');
+			TA1 = document.getElementById('TA1');
+		};
+		function OnSelectCode()
+		{
+			TA1.select();
+                        document.execCommand("copy");
+                        document.getElementById('btn').innerHTML = "Copied";
+		}
+		function OnReset()
+		{
+			T1.value="";
+			TA1.value="";
+		}
+		function GenerateButton() 
+		{
+			color = T1.value;
+				txt = '<style>';
+                txt+='\n';
+				txt+= 'input[type=text]:focus {';
+                txt+='\n';
+				txt+= 'box-shadow: 0px 0px 0px 3px rgba(';
+                txt+= color;
+				txt+= ', 0.4);';
+                txt+='\n';
+                txt+='}';
+                txt+='\n';
+                txt+= 'select:focus {';
+                txt+='\n';
+				txt+= 'box-shadow: 0px 0px 0px 3px rgba(';
+                txt+= color;
+				txt+= ', 0.4);';
+                txt+='\n';
+                txt+='}';
+                txt+='\n';
+                txt+= 'input[type=email]:focus {';
+                txt+='\n';
+				txt+= 'box-shadow: 0px 0px 0px 3px rgba(';
+                txt+= color;
+				txt+= ', 0.4);';
+                txt+='\n';
+                txt+='}';
+                txt+='\n';
+                txt+= 'input[type=url]:focus {';
+                txt+='\n';
+				txt+= 'box-shadow: 0px 0px 0px 3px rgba(';
+                txt+= color;
+				txt+= ', 0.4);';
+                txt+='\n';
+                txt+='}';
+                txt+='\n';
+                txt+= 'input[type=number]:focus {';
+                txt+='\n';
+				txt+= 'box-shadow: 0px 0px 0px 3px rgba(';
+                txt+= color;
+				txt+= ', 0.4);';
+                txt+='\n';
+                txt+='}';
+                txt+='\n';
+                txt+= 'input[type=password]:focus {';
+                txt+='\n';
+				txt+= 'box-shadow: 0px 0px 0px 3px rgba(';
+                txt+= color;
+				txt+= ', 0.4);';
+                txt+='\n';
+                txt+='}';
+		txt+= '</style>';
+			
+			TA1.value = txt;
+		}
+</script>
