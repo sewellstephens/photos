@@ -1,0 +1,141 @@
+<style>
+  body {
+  font-family: arial;
+  }
+  input {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 1px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  input:focus {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 2px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  select {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 1px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  select:focus {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 2px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  button {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  background-color: #0095FF;
+  outline: none;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-delay: 0s;
+  }
+  button:hover {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  opacity: 0.5;
+  background-color: #0095FF;
+  outline: none;
+  cursor: pointer;
+  }
+  textarea {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 1px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+</style>
+<form name="gen" id="calc">
+<input type="text" id="T1" name="T1" placeholder="Url" required>
+<p>
+<input type="number" id="T2" name="T2" placeholder="Width" required>
+<p>
+<input type="number" id="T3" name="T3" placeholder="Height" required>
+</form>
+<button name="B1" onclick="GenerateButton()" class="btn">Generate</button>
+  <p>Copy and paste code</p>
+<p><textarea rows="5" id="TA1" name="TA1" placeholder="Code appears here..." readonly></textarea></p>
+<button onclick="OnSelectCode()" class="btn" id="copybtn">Copy</button>
+<script>
+		var T1,T2,TA1,T3;
+		window.onload = function() 
+		{
+			
+			T1 = document.getElementById('T1');
+			T2 = document.getElementById('T2');
+            T3 = document.getElementById('T3');
+			TA1 = document.getElementById('TA1');
+		};
+		function OnSelectCode()
+		{
+			TA1.select();
+                        document.execCommand("copy");
+                        document.getElementById('btn').innerHTML = "Copied";
+		}
+		function OnReset()
+		{
+			T1.value="";
+			T2.value="";
+			TA1.value="";
+		}
+		function GenerateButton() 
+		{
+			src  = T1.value;
+			width = T2.value;
+			height = T3.value;
+				txt = '<!DOCTYPE html>\n<html>\n<body>\n';
+				txt+= '\n';
+                txt+= '<iframe src="';
+				txt+= src;
+                txt+= '" style="width:';
+                txt+= width;
+                txt+= 'px;height:';
+                txt+= height;
+                txt+= 'px;"></iframe>'
+				txt+= '</body></html>';
+			
+			TA1.value = txt;
+		}
+	</script>
