@@ -1,0 +1,123 @@
+<style>
+  body {
+  font-family: arial;
+  }
+  input {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 1px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  input:focus {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 2px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  select {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 1px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  select:focus {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 2px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+  button {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  background-color: #0095FF;
+  outline: none;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-delay: 0s;
+  }
+  button:hover {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  opacity: 0.5;
+  background-color: #0095FF;
+  outline: none;
+  cursor: pointer;
+  }
+  textarea {
+  -webkit-appearence: none;
+  -moz-appearence: none;
+  border: 1px solid #0095FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  }
+</style>
+<form name="gen" id="calc">
+<input type="text" id="T1" name="T1" placeholder="Image/Gif url" required>
+  <p style="font-size: 12px;">Will be resized to 50px by 50px</p>
+</form>
+<button name="B1" onclick="GenerateButton()" class="btn">Generate</button>
+  <p>Copy and paste code</p>
+<p><textarea rows="5" id="TA1" name="TA1" placeholder="Code appears here..." readonly></textarea></p>
+<button onclick="OnSelectCode()" class="btn" id="copybtn">Copy</button>
+<script>
+		var T1,TA1,src;
+		window.onload = function() 
+		{
+			T1 = document.getElementById('T1');
+			TA1 = document.getElementById('TA1');
+		};
+		function OnSelectCode()
+		{
+			TA1.select();
+                        document.execCommand("copy");
+                        document.getElementById('btn').innerHTML = "Copied";
+		}
+		function OnReset()
+		{
+			T1.value="";
+			TA1.value="";
+		}
+		function GenerateButton() 
+		{
+			src = T1.value;
+				txt = '<div style="position: fixed;bottom: 0;right: 0; left: 0; top: 0;background-color: white;" id="bg">\n <div class="spinner" id="preloader" style="background-color: white;">\n <img alt="b4d657e7ef262b88eb5f7ac021edda87.gif" src="' + src + '" width="50" height="50"></img>\n </div>\n<style>\n.spinner {\n position: absolute;\n height: 2em; \n width: 2em;\n overflow: show;\n margin: auto;\n top: 0;\n left: 0;\n bottom: 0;\n right: 0; \n width: 70px; \n text-align: center;\n}\n.spinner \n div \n{\n  width: 18px; \n height: 18px; \n background-color: black; \n border-radius: 100%; \n display: inline-block; \n -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both; \n animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n}\n.spinner .bounce1 {\n  -webkit-animation-delay: -0.32s;  \n animation-delay: -0.32s;\n}\n.spinner .bounce2 {\n  -webkit-animation-delay: -0.16s; \n animation-delay: -0.16s;\n}\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n -webkit-transform: scale(0) }  40% { -webkit-transform: scale(1.0) }}@keyframes sk-bouncedelay {  0%, 80%, 100% {     -webkit-transform: scale(0);    transform: scale(0);  } 40% {     -webkit-transform: scale(1.0);    transform: scale(1.0);  }}</style>';
+			
+			TA1.value = txt;
+		}
+	</script>
